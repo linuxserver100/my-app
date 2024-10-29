@@ -36,6 +36,6 @@ jobs:
           USER: ${{ secrets.SERVER_USER }}
           KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-          echo "$KEY" > private_key
+          echo "$SSH_PRIVATE_KEY" > private_key
           chmod 600 private_key
           ssh  -i private_key $USER@$HOST 'bash -s' < ./scripts/deploy.sh
