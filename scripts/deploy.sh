@@ -8,4 +8,4 @@ rm -rf $FRONTEND_PATH/build
 mv ~/frontend/build $FRONTEND_PATH
 # Backend deployment
 echo "Deploying backend..."
-sudo npm i pm2 -g && pm2 restart server || pm2 start backend/index.js --name server
+sudo npm i pm2 -g && cd /var/www/backend && pm2 start index.js
