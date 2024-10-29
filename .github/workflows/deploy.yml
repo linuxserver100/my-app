@@ -36,4 +36,6 @@ jobs:
           USER: ${{ secrets.SERVER_USER }}
           KEY: ${{ secrets.SSH_PRIVATE_KEY }}
         run: |
-             ssh -i "$KEY" -o StrictHostKeyChecking=no $USER@$HOST 'bash -s' < ./scripts/deploy.sh
+             echo "$KEY" > private_key
+             chmod 600 private_key
+             ssh -i private_key -o StrictHostKeyChecking=no $USER@$HOST 'bash -s' < ./scripts/deploy.sh
